@@ -1237,10 +1237,16 @@ class Redis(RedisBase):
         self._send('INFO')
 
         def post_process(res):
+            """
+            Return a dict of dicts, with sections ("Server", "Client" etc.) as
+            the root dict keys.
+            """
             info = dict()
             res = res.split('\r\n')
             for l in res:
                 if not l:
+                    continue
+                if l.startswith('#'):
                     continue
                 k, v = l.split(':')
                 info[k] = int(v) if v.isdigit() else v
