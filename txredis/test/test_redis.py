@@ -873,7 +873,7 @@ class Lists(CommandsTestBase):
         ex = None
         t(a, ex)
 
-    def test_lset_on_nonexistant_key(self):
+    def test_lset_on_nonexistent_key(self):
         r = self.redis
         t = self.assertEqual
 
@@ -1738,7 +1738,7 @@ class SortedSet(CommandsTestBase):
         ex = [('b', 4.252), ('d', 10.425)]
 
     @defer.inlineCallbacks
-    def test_zscore_and_zrange_nonexistant(self):
+    def test_zscore_and_zrange_nonexistent(self):
         r = self.redis
         t = self.assertEqual
 
